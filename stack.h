@@ -8,6 +8,7 @@ class Stack {
 public:
     void push(int);
     int pop();
+    int get_size(){return size;}
     Stack();
     ~Stack();
 };
@@ -19,14 +20,10 @@ void Stack::push(int x){
     new_node->set_next(top);
     top = new_node;
     size++;
-
-            // link to the previous top
-            //change the top
-            //increase the size
+   }    
+   else {
+    top= new_node; new_node->set_next(NULL); size++;
    }
- 
-         // Left missing for exercises…
-    
 }
 
 int Stack::pop(){
@@ -37,12 +34,11 @@ int Stack::pop(){
         NodePtr t=top;
         int value;
         value=t->get_value();
-    // Left missing part for exercises
+
     top= top->get_next();
     size --;
         delete t;
         return value;
-	//be careful of the empty stack!!!
     }
 
 Stack::Stack(){
@@ -51,7 +47,6 @@ Stack::Stack(){
     
 }
 Stack::~Stack(){
-    //delete all remaning stack (i.e. pop all) 
     while (top != NULL) {
             pop();
     }    
